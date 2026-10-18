@@ -44,6 +44,8 @@ replace the UDP JSON adapter behind the same Rust telemetry boundary.
 - Offline/read-only parameter-file parser.
 - Offline parameter diff with changed, added, removed, and unchanged values.
 - Markdown parameter report export.
+- Log replay panel that hands a `.BIN` or `.tlog` file to an external replay
+  helper (see [`tools/README.md`](tools/README.md#replay-helper-path)).
 - Safety lockouts showing that command authority is disabled.
 
 ## Safety Boundary
@@ -62,6 +64,10 @@ This project cannot:
 The parameter tools are offline and file-based only.
 
 ## Run The App
+
+You need the Flutter SDK (Dart 3.12 or newer) with Linux desktop support, and a
+stable Rust toolchain. The Rust library is built automatically through
+`rust_builder/` on the first run.
 
 ```bash
 flutter pub get
@@ -122,8 +128,8 @@ Example parameter names used for demos:
 - `EK3_ENABLE`
 
 Full-line `#` and `//` comments are ignored. Inline comments are stripped and
-counted. Duplicate parameter names are reported; the last parsed value is used
-for comparison.
+counted. Duplicate parameter names are reported, and the last parsed value is
+used for comparison.
 
 ## Session Logs
 
